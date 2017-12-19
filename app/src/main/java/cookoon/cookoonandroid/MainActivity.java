@@ -13,6 +13,8 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import android.util.Log;
+
 import com.basecamp.turbolinks.TurbolinksAdapter;
 import com.basecamp.turbolinks.TurbolinksSession;
 import com.basecamp.turbolinks.TurbolinksView;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
     // Change the BASE_URL to an address that your VM or device can hit.
 //    private static final String BASE_URL = "https://cookoon-staging.herokuapp.com/";
     private static final String BASE_URL = "https://app.cookoon.fr/";
-    private static final String INTENT_URL = "https://app.cookoon.fr/";
+    private static final String INTENT_URL = "";
 
     private Boolean mUploadingFile = false;
     private ValueCallback<Uri> mUploadMessage;
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
         Uri appLinkData = getIntent().getData();
         String locationWithLink = getIntent().getStringExtra(INTENT_URL);
         if (appLinkData != null) {
-            location = INTENT_URL + appLinkData.getLastPathSegment();
+            location = appLinkData.toString();
         }   else if (locationWithLink != null) {
             location = locationWithLink;
         } else {
