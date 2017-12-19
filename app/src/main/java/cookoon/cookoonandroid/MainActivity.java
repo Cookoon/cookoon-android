@@ -13,16 +13,12 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import android.util.Log;
-
 import com.basecamp.turbolinks.TurbolinksAdapter;
 import com.basecamp.turbolinks.TurbolinksSession;
 import com.basecamp.turbolinks.TurbolinksView;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+//Uncomment to use Logs
+//import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements TurbolinksAdapter {
 
@@ -54,25 +50,8 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
         TurbolinksSession.getDefault(this).getWebView().getSettings().setAllowFileAccess(true);
         webView = TurbolinksSession.getDefault(this).getWebView();
 
-
         // Find the custom TurbolinksView object in your layout
         turbolinksView = (TurbolinksView) findViewById(R.id.turbolinks_view);
-
-        // For this demo app, we force debug logging on. You will only want to do
-        // this for debug builds of your app (it is off by default)
-        // TurbolinksSession.getDefault(this).setDebugLoggingEnabled(true);
-
-        // Need to improve this part
-        Uri appLinkData = getIntent().getData();
-        String locationWithLink = getIntent().getStringExtra(INTENT_URL);
-        if (appLinkData != null) {
-            location = appLinkData.toString();
-        }   else if (locationWithLink != null) {
-            location = locationWithLink;
-        } else {
-            location = BASE_URL;
-        }
-
 
         // Code to open library
         webView.setWebChromeClient(new WebChromeClient() {
@@ -111,6 +90,21 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
             }
         });
 
+       handleIntent(getIntent());
+    }
+
+    void handleIntent(Intent intent) {
+        // Need to improve this part
+        Uri appLinkData = intent.getData();
+        String locationWithLink = intent.getStringExtra(INTENT_URL);
+        if (appLinkData != null) {
+            location = appLinkData.toString();
+        }   else if (locationWithLink != null) {
+            location = locationWithLink;
+        } else {
+            location = BASE_URL;
+        }
+
         // Execute the visit
         TurbolinksSession.getDefault(this)
                 .activity(this)
@@ -118,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
                 .view(turbolinksView)
                 .visit(location);
     }
+
 
     @Override
     protected void onRestart() {
@@ -199,8 +194,20 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
     // routing logic to take you to the right place within your app.
     @Override
     public void visitProposedToLocationWithAction(String location, String action) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra(INTENT_URL, location);
-        this.startActivity(intent);
+        if(!location.contains(BASE_URL)) {
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(location));
+            startActivity(i);
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra(INTENT_URL, location);
+            intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            this.startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        handleIntent(intent);
     }
 }
