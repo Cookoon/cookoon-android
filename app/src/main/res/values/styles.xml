@@ -4,9 +4,10 @@
     <style name="AppFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowDisablePreview">true</item>
+        <item name="colorPrimaryDark">#FBFEF0</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>
