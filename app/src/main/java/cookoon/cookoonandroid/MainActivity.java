@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
         // Find the custom TurbolinksView object in your layout
         turbolinksView = (TurbolinksView) findViewById(R.id.turbolinks_view);
 
+        // TurbolinksSession.getDefault(this).setDebugLoggingEnabled(true);
+        // TurbolinksSession.getDefault(this).setScreenshotsEnabled(false);
+        TurbolinksSession.getDefault(this).setPullToRefreshEnabled(false);
+
         // Code to open library
         webView.setWebChromeClient(new WebChromeClient() {
             //For Android 4.1+
