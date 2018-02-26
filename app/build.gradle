@@ -15,16 +15,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "Cookoon", hostName: "app.cookoon.fr", icLauncher: "ic_launcher"]
+            buildConfigField "String", "APP_CENTER_SECRET", "\"1bb5b1b5-b0d8-4e9e-b8a9-f145161a8070\""
             buildConfigField "String", "BASE_URL", "\"https://app.cookoon.fr\""
         }
         staging {
-            initWith release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             manifestPlaceholders = [appName: "Cookoon Staging", hostName: "cookoon-staging.herokuapp.com", icLauncher: "ic_launcher_staging"]
+            buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
             buildConfigField "String", "BASE_URL", "\"https://cookoon-staging.herokuapp.com\""
             applicationIdSuffix ".staging"
         }
         debug {
             manifestPlaceholders = [appName: "Cookoon Debug", hostName: "cookoon-staging.herokuapp.com", icLauncher: "ic_launcher"]
+            buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
             buildConfigField "String", "BASE_URL", "\"https://cookoon-staging.herokuapp.com\""
         }
     }

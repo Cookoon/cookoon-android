@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        AppCenter.start(getApplication(), "8d13f10f-66d2-452c-b4d6-5a0d14f7099a",
+        AppCenter.start(getApplication(), BuildConfig.APP_CENTER_SECRET,
                 Analytics.class, Crashes.class);
 
         TurbolinksSession.getDefault(this).getWebView().getSettings().setAllowFileAccess(true);
