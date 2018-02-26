@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="cookoon.cookoonandroid">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,19 +12,20 @@
     <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
+        tools:replace="android:label"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher_cookoon"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_cookoon_round"
+        android:icon="@mipmap/${icLauncher}"
+        android:label="${appName}"
+        android:roundIcon="@mipmap/${icLauncher}_round"
         android:supportsRtl="true"
-        android:theme="@style/AppFullScreenTheme">
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="asset_statements"
             android:resource="@string/asset_statements" />
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
-            android:windowSoftInputMode="stateVisible|adjustResize">
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -34,7 +36,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="https" android:host="app.cookoon.fr" />
+                <data android:scheme="https" android:host="${hostName}" />
             </intent-filter>
         </activity>
     </application>

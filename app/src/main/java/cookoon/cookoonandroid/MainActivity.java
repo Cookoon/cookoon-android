@@ -17,16 +17,16 @@ import com.basecamp.turbolinks.TurbolinksAdapter;
 import com.basecamp.turbolinks.TurbolinksSession;
 import com.basecamp.turbolinks.TurbolinksView;
 
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+
 //Uncomment to use Logs
 //import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements TurbolinksAdapter {
-
-    // Change the BASE_URL to an address that your VM or device can hit.
-//    private static final String BASE_URL = "https://cookoon-staging.herokuapp.com/";
-    private static final String BASE_URL = "https://app.cookoon.fr/";
-//    private static final String BASE_URL = "http://10.0.2.2:3000";
-    private static final String INTENT_URL = "";
+    private static final String BASE_URL = BuildConfig.BASE_URL;
+    private static final String INTENT_URL = "intentUrl";
 
     private Boolean mUploadingFile = false;
     private ValueCallback<Uri> mUploadMessage;
@@ -48,11 +48,18 @@ public class MainActivity extends AppCompatActivity implements TurbolinksAdapter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCenter.start(getApplication(), BuildConfig.APP_CENTER_SECRET,
+                Analytics.class, Crashes.class);
+
         TurbolinksSession.getDefault(this).getWebView().getSettings().setAllowFileAccess(true);
         webView = TurbolinksSession.getDefault(this).getWebView();
 
         // Find the custom TurbolinksView object in your layout
         turbolinksView = (TurbolinksView) findViewById(R.id.turbolinks_view);
+
+        // TurbolinksSession.getDefault(this).setDebugLoggingEnabled(true);
+        // TurbolinksSession.getDefault(this).setScreenshotsEnabled(false);
+        TurbolinksSession.getDefault(this).setPullToRefreshEnabled(false);
 
         // Code to open library
         webView.setWebChromeClient(new WebChromeClient() {
