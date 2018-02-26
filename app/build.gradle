@@ -29,7 +29,7 @@ android {
         debug {
             manifestPlaceholders = [appName: "Cookoon Debug", hostName: "cookoon-staging.herokuapp.com", icLauncher: "ic_launcher"]
             buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
-            buildConfigField "String", "BASE_URL", "\"https://cookoon-staging.herokuapp.com\""
+            buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:3000\""
         }
     }
 }
