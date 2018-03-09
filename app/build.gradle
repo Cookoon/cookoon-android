@@ -27,7 +27,7 @@ android {
             applicationIdSuffix ".staging"
         }
         debug {
-            manifestPlaceholders = [appName: "Cookoon Debug", hostName: "app.cookoon.fr", icLauncher: "ic_launcher"]
+            manifestPlaceholders = [appName: "Cookoon Debug", hostName: "http://10.0.2.2:3000", icLauncher: "ic_launcher"]
             buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
             buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:3000\""
         }

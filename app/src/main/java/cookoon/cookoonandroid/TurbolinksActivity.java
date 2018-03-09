@@ -104,7 +104,6 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
 
     @Override
     public void onReceivedError(int errorCode) {
-        // handleError(errorCode);
     }
 
     @Override
@@ -114,7 +113,6 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
 
     @Override
     public void requestFailedWithStatusCode(int statusCode) {
-        // handleError(statusCode);
     }
 
     @Override
@@ -138,21 +136,4 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
 
         this.startActivity(intent);
     }
-
-    // -----------------------------------------------------------------------
-    // Private
-    // -----------------------------------------------------------------------
-
-    // Simply forwards to an error page, but you could alternatively show your own native screen
-    // or do whatever other kind of error handling you want.
-    // private void handleError(int code) {
-    //     if (code == 404) {
-    //         TurbolinksSession.getDefault(this)
-    //                 .activity(this)
-    //                 .adapter(this)
-    //                 .restoreWithCachedSnapshot(false)
-    //                 .view(turbolinksView)
-    //                 .visit(BASE_URL + "/error");
-    //     }
-    // }
 }

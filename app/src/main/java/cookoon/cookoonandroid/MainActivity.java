@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         intent.putExtra(INTENT_URL, BASE_URL);
                     }
-
-                    startActivity(intent);
                 } else {
-                    startActivity(intent);
+                    intent.putExtra(INTENT_URL, BASE_URL);
                 }
+
+                startActivity(intent);
             }
         }, this.getIntent().getData(), this);
     }
