@@ -6,8 +6,8 @@ android {
         applicationId "cookoon.cookoonandroid"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 10
-        versionName "1.4.0"
+        versionCode 1
+        versionName "1.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -27,7 +27,7 @@ android {
             applicationIdSuffix ".staging"
         }
         debug {
-            manifestPlaceholders = [appName: "Cookoon Debug", hostName: "cookoon-staging.herokuapp.com", icLauncher: "ic_launcher"]
+            manifestPlaceholders = [appName: "Cookoon Debug", hostName: "app.cookoon.fr", icLauncher: "ic_launcher"]
             buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
             buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:3000\""
         }
@@ -40,13 +40,20 @@ repositories {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
     implementation 'com.basecamp:turbolinks:1.0.8'
+
     def appCenterSdkVersion = '1.3.0'
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+
+    compile 'io.branch.sdk.android:library:2.+'
+    compile 'com.android.support:customtabs:27.1.0'
+    compile 'com.google.android.gms:play-services-ads:11.8.0'
+    compile 'com.google.firebase:firebase-appindexing:11.8.0'
 }
