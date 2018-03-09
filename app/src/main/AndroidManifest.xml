@@ -52,7 +52,6 @@
 
         <activity
             android:name=".TurbolinksActivity"
-            android:label="${appName}"
             android:parentActivityName=".MainActivity" />
 
         <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_hmxKEByFt9UD9dlLbCXxIkdiDBiWvbsa" />

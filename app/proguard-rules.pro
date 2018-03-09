@@ -23,3 +23,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Branch uses the GAID to identify users across our entire partner network
+-keep class com.google.android.gms.ads.identifier.** { *; }
