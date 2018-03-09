@@ -39,12 +39,6 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" android:host="${hostName}" />
-            </intent-filter>
-
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="https" android:host="cookoon.app.link" />
                 <data android:scheme="https" android:host="cookoon-alternate.app.link" />
             </intent-filter>
