@@ -39,8 +39,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:scheme="https" android:host="${hostName}" />
-                <data android:scheme="https" android:host="cookoon.app.link" />
-                <data android:scheme="https" android:host="cookoon-alternate.app.link" />
+                <data android:scheme="https" android:host="${appLink}" />
+                <data android:scheme="https" android:host="${alternateAppLink}" />
             </intent-filter>
         </activity>
 
@@ -48,7 +48,7 @@
             android:name=".TurbolinksActivity"
             android:parentActivityName=".MainActivity" />
 
-        <meta-data android:name="io.branch.sdk.BranchKey" android:value="key_live_hmxKEByFt9UD9dlLbCXxIkdiDBiWvbsa" />
+        <meta-data android:name="io.branch.sdk.BranchKey" android:value="${branchKey}" />
     </application>
 
 </manifest>
