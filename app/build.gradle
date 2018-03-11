@@ -14,20 +14,41 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [appName: "Cookoon", hostName: "app.cookoon.fr", icLauncher: "ic_launcher", appLink: "cookoon.app.link", alternateAppLink: "cookoon-alternate.app.link", branchKey: "key_live_hmxKEByFt9UD9dlLbCXxIkdiDBiWvbsa"]
+            manifestPlaceholders = [
+                    appName: "Cookoon",
+                    icLauncher: "ic_launcher",
+                    hostName: "app.cookoon.fr",
+                    appLink: "cookoon.app.link",
+                    alternateAppLink: "cookoon-alternate.app.link",
+                    branchKey: "key_live_hmxKEByFt9UD9dlLbCXxIkdiDBiWvbsa"
+            ]
             buildConfigField "String", "APP_CENTER_SECRET", "\"1bb5b1b5-b0d8-4e9e-b8a9-f145161a8070\""
             buildConfigField "String", "BASE_URL", "\"https://app.cookoon.fr\""
         }
         staging {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            manifestPlaceholders = [appName: "Cookoon Staging", hostName: "cookoon-staging.herokuapp.com", icLauncher: "ic_launcher_staging", appLink: "cookoon.test-app.link", alternateAppLink: "cookoon-alternate.test-app.link", branchKey: "key_test_ibwHCzAzBXUD4oaTmu6CYjeeytm7qmCt"]
+            manifestPlaceholders = [
+                    appName: "Cookoon Staging",
+                    icLauncher: "ic_launcher_staging",
+                    hostName: "cookoon-staging.herokuapp.com",
+                    appLink: "cookoon.test-app.link",
+                    alternateAppLink: "cookoon-alternate.test-app.link",
+                    branchKey: "key_test_ibwHCzAzBXUD4oaTmu6CYjeeytm7qmCt"
+            ]
             buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
             buildConfigField "String", "BASE_URL", "\"https://cookoon-staging.herokuapp.com\""
             applicationIdSuffix ".staging"
         }
         debug {
-            manifestPlaceholders = [appName: "Cookoon Debug", hostName: "http://10.0.2.2:3000", icLauncher: "ic_launcher", appLink: "cookoon.test-app.link", alternateAppLink: "cookoon-alternate.test-app.link", branchKey: "key_test_ibwHCzAzBXUD4oaTmu6CYjeeytm7qmCt"]
+            manifestPlaceholders = [
+                    appName: "Cookoon Debug",
+                    icLauncher: "ic_launcher",
+                    hostName: "10.0.2.2:3000",
+                    appLink: "cookoon.test-app.link",
+                    alternateAppLink: "cookoon-alternate.test-app.link",
+                    branchKey: "key_test_ibwHCzAzBXUD4oaTmu6CYjeeytm7qmCt"
+            ]
             buildConfigField "String", "APP_CENTER_SECRET", "\"8d13f10f-66d2-452c-b4d6-5a0d14f7099a\""
             buildConfigField "String", "BASE_URL", "\"http://10.0.2.2:3000\""
         }
@@ -52,8 +73,8 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
 
-    compile 'io.branch.sdk.android:library:2.+'
-    compile 'com.android.support:customtabs:27.1.0'
-    compile 'com.google.android.gms:play-services-ads:11.8.0'
-    compile 'com.google.firebase:firebase-appindexing:11.8.0'
+    implementation 'io.branch.sdk.android:library:2.+'
+    implementation 'com.android.support:customtabs:27.1.0'
+    implementation 'com.google.android.gms:play-services-ads:11.8.0'
+    implementation 'com.google.firebase:firebase-appindexing:11.8.0'
 }

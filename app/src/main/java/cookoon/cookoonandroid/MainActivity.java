@@ -26,6 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         AppCenter.start(getApplication(), BuildConfig.APP_CENTER_SECRET,
                         Analytics.class, Crashes.class);
+
+        Intent intent = new Intent(MainActivity.this, TurbolinksActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        intent.putExtra(INTENT_URL, BASE_URL);
+        startActivity(intent);
     }
 
     @Override
@@ -35,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onInitFinished(JSONObject referringParams, BranchError error) {
                 Intent intent = new Intent(MainActivity.this, TurbolinksActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
                 if (error == null) {
                     String deeplinkPath = referringParams.optString("$deeplink_path", "");
@@ -42,17 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
                     if (!deeplinkPath.equals("")) {
                         intent.putExtra(INTENT_URL, deeplinkPath);
-                    }
-                    else if (!nonBranchLink.equals("")){
+                        startActivity(intent);
+                    } else if (!nonBranchLink.equals("")){
                         intent.putExtra(INTENT_URL, nonBranchLink);
-                    } else {
-                        intent.putExtra(INTENT_URL, BASE_URL);
+                        startActivity(intent);
                     }
-                } else {
-                    intent.putExtra(INTENT_URL, BASE_URL);
                 }
-
-                startActivity(intent);
             }
         }, this.getIntent().getData(), this);
     }
