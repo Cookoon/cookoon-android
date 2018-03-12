@@ -46,7 +46,7 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
         setContentView(R.layout.activity_main);
 
         // TurbolinksSession.getDefault(this).setDebugLoggingEnabled(true);
-        // TurbolinksSession.getDefault(this).setScreenshotsEnabled(false);
+        TurbolinksSession.getDefault(this).setScreenshotsEnabled(false);
         TurbolinksSession.getDefault(this).setPullToRefreshEnabled(false);
 
         WebView webview = TurbolinksSession.getDefault(this).getWebView();
