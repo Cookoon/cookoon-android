@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.ValueCallback;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.basecamp.turbolinks.TurbolinksSession;
@@ -44,13 +45,18 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TurbolinksSession.getDefault(this).getWebView().setWebChromeClient(new WebChromeClient());
-
-        turbolinksView = (TurbolinksView) findViewById(R.id.turbolinks_view);
-
         // TurbolinksSession.getDefault(this).setDebugLoggingEnabled(true);
         // TurbolinksSession.getDefault(this).setScreenshotsEnabled(false);
         TurbolinksSession.getDefault(this).setPullToRefreshEnabled(false);
+
+        WebView webview = TurbolinksSession.getDefault(this).getWebView();
+        webview.setWebChromeClient(new WebChromeClient());
+
+        WebSettings settings = webview.getSettings();
+        String userAgent = settings.getUserAgentString();
+        settings.setUserAgentString(userAgent.concat(" Cookoon Inside Android; wv"));
+
+        turbolinksView = (TurbolinksView) findViewById(R.id.turbolinks_view);
 
         location = getIntent().getStringExtra(INTENT_URL);
 
