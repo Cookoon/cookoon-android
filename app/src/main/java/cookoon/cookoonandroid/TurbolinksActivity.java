@@ -53,8 +53,8 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
         webview.setWebChromeClient(new WebChromeClient());
 
         WebSettings settings = webview.getSettings();
-        String userAgent = settings.getUserAgentString();
-        settings.setUserAgentString(userAgent.concat(" Cookoon Inside Android; wv"));
+        String defaultUserAgent = WebSettings.getDefaultUserAgent(this);
+        settings.setUserAgentString(defaultUserAgent.concat(" Cookoon Inside Android; wv"));
 
         turbolinksView = (TurbolinksView) findViewById(R.id.turbolinks_view);
 
