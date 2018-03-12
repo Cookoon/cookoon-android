@@ -87,7 +87,14 @@ public class TurbolinksActivity extends AppCompatActivity implements TurbolinksA
     @Override
     protected void onRestart() {
         super.onRestart();
-        if (onSelectFileCallback) {
+        if (!onSelectFileCallback) {
+            TurbolinksSession.getDefault(this)
+                             .activity(this)
+                             .adapter(this)
+                             .restoreWithCachedSnapshot(true)
+                             .view(turbolinksView)
+                             .visit(location);
+        } else {
             onSelectFileCallback = false;
         }
     }
