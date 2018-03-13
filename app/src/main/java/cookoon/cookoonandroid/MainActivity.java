@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     String deeplinkPath = referringParams.optString("$deeplink_path", "");
                     String nonBranchLink = referringParams.optString("+non_branch_link", "");
 
-                    if (!deeplinkPath.equals("")) {
+                    if (!deeplinkPath.equals("") && deeplinkPath.startsWith(BASE_URL)) {
                         intent.putExtra(INTENT_URL, deeplinkPath);
                         startActivity(intent);
                     } else if (!nonBranchLink.equals("")){
