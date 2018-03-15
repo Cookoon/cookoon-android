@@ -19,7 +19,7 @@
         android:label="${appName}"
         android:roundIcon="@mipmap/${icLauncher}_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme.NoActionBar">
         <meta-data
             android:name="asset_statements"
             android:resource="@string/asset_statements" />
