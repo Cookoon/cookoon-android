@@ -26,6 +26,7 @@
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTask"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
 
             <intent-filter>
@@ -46,6 +47,7 @@
 
         <activity
             android:name=".TurbolinksActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".MainActivity" />
 
